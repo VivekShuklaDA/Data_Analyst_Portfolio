@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivek Shukla | Data Analyst Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9fbfd;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #0d47a1;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    nav {
+      background: #1565c0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      position: sticky;
+      top: 0; z-index: 1000;
+    }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; }
+    section { padding: 3rem 2rem; max-width: 1000px; margin: auto; }
+    h2 { color: #0d47a1; margin-bottom: 1rem; }
+    p { line-height: 1.6; }
+
+    /* Skill List */
+    .skills { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .skill {
+      background: #e3f2fd;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #90caf9;
+      font-size: 0.9rem;
+    }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 100%; border-radius: 8px; }
+
+    /* Modal */
+    .modal {
+      display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+      width: 100%; height: 100%; overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background: #fff; margin: 5% auto; padding: 20px; border-radius: 10px;
+      width: 90%; max-width: 700px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .modal-content img { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+    .modal-content h3 { margin-top: 0; color: #0d47a1; }
+    .modal-content .btn {
+      display: inline-block; background: #0d47a1; color: #fff;
+      padding: 0.6rem 1rem; margin: 0.2rem; border-radius: 6px;
+      text-decoration: none; font-size: 0.9rem;
+    }
+    .modal-content .btn:hover { background: #1565c0; }
+    .close { float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    .close:hover { color: red; }
+    @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
+
+    footer { text-align: center; padding: 1rem; background: #1565c0; color: #fff; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Vivek Shukla</h1>
+    <p>Fresher Data Analyst | Excel • SQL • Power BI • Tableau</p>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I’m <strong>Vivek Shukla</strong>, a passionate fresher data analyst from Delhi. 
+      I specialize in transforming raw data into meaningful insights using Power BI, Excel, SQL, and Tableau. 
+      I’ve completed multiple hands-on projects and hold certifications that showcase my growing expertise. 
+      My goal is to start my career as a data analyst and contribute to data-driven decision making.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Technical & Soft Skills</h2>
+    <div class="skills">
+      <span class="skill">Power BI</span>
+      <span class="skill">SQL</span>
+      <span class="skill">Excel</span>
+      <span class="skill">Tableau</span>
+      <span class="skill">Data Cleaning</span>
+      <span class="skill">Data Visualization</span>
+      <span class="skill">DAX</span>
+      <span class="skill">ETL Basics</span>
+      <span class="skill">Communication</span>
+      <span class="skill">Problem Solving</span>
+      <span class="skill">Teamwork</span>
+      <span class="skill">Adaptability</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <!-- Example card -->
+    <div class="card" onclick="openModal('dairyModal')">
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+    </div>
+     <div class="card" onclick="openModal('dairyModal')">
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+    </div>
+     <div class="card" onclick="openModal('dairyModal')">
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+    </div>
+     <div class="card" onclick="openModal('dairyModal')">
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+    </div>
+     <div class="card" onclick="openModal('dairyModal')">
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+    </div>
+    <!-- Add the other 9 project cards here like earlier -->
+  </section>
+
+  <!-- PROJECT MODALS (example) -->
+  <div id="dairyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('dairyModal')">&times;</span>
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+      <p>Tracked 118M sales with MoM trends, channel mix, and geographic insights. Reduced ad-hoc queries by 40%.</p>
+      <a class="btn" href="https://tinyurl.com/53vp2674" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
+      <a class="btn" href="https://github.com/yourusername/dairy-dashboard" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+    <div id="dairyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('dairyModal')">&times;</span>
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+      <p>Tracked 118M sales with MoM trends, channel mix, and geographic insights. Reduced ad-hoc queries by 40%.</p>
+      <a class="btn" href="https://tinyurl.com/53vp2674" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
+      <a class="btn" href="https://github.com/yourusername/dairy-dashboard" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+    <div id="dairyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('dairyModal')">&times;</span>
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+      <p>Tracked 118M sales with MoM trends, channel mix, and geographic insights. Reduced ad-hoc queries by 40%.</p>
+      <a class="btn" href="https://tinyurl.com/53vp2674" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
+      <a class="btn" href="https://github.com/yourusername/dairy-dashboard" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+    <div id="dairyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('dairyModal')">&times;</span>
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+      <p>Tracked 118M sales with MoM trends, channel mix, and geographic insights. Reduced ad-hoc queries by 40%.</p>
+      <a class="btn" href="https://tinyurl.com/53vp2674" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
+      <a class="btn" href="https://github.com/yourusername/dairy-dashboard" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+    <div id="dairyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('dairyModal')">&times;</span>
+      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
+      <img src="images/dairy_dashboard.png" alt="Dairy Dashboard">
+      <p>Tracked 118M sales with MoM trends, channel mix, and geographic insights. Reduced ad-hoc queries by 40%.</p>
+      <a class="btn" href="https://tinyurl.com/53vp2674" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
+      <a class="btn" href="https://github.com/yourusername/dairy-dashboard" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <div class="card">
+      <h3>Google Data Analytics Certificate</h3>
+      <p>Issued by Google</p>
+      <a class="btn" href="files/google_data_analytics.pdf" target="_blank">View Certificate</a>
+    </div>
+    <div class="card">
+      <h3>Microsoft Excel Fundamentals</h3>
+      <p>Issued by Microsoft</p>
+      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
+    </div>
+     <div class="card">
+      <h3>Microsoft Excel Fundamentals</h3>
+      <p>Issued by Microsoft</p>
+      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
+    </div>
+     <div class="card">
+      <h3>Microsoft Excel Fundamentals</h3>
+      <p>Issued by Microsoft</p>
+      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
+    </div>
+     <div class="card">
+      <h3>Microsoft Excel Fundamentals</h3>
+      <p>Issued by Microsoft</p>
+      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
+    </div>
+     <div class="card">
+      <h3>Microsoft Excel Fundamentals</h3>
+      <p>Issued by Microsoft</p>
+      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
+    </div>
+    <!-- Add more certificates the same way -->
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <a class="btn" href="Vivek_Shukla_CV.pdf" target="_blank">View Resume</a>
+    <a class="btn" href="Vivek_Shukla_CV.pdf" download>Download Resume</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:vivekshukla22057@gmail.com">vivekshukla22057@gmail.com</a></p>
+    <p>Phone: +91 96674 70640</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/vivekshukla01" target="_blank">linkedin.com/in/vivekshukla01</a></p>
+    <p>GitHub: <a href="https://github.com/vivekshukla" target="_blank">github.com/vivekshukla</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Vivek Shukla. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function openModal(id) { document.getElementById(id).style.display = "block"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target == modal) modal.style.display = "none";
+      });
+    }
+  </script>
+
+</body>
+</html>
