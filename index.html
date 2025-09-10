@@ -100,6 +100,34 @@ body.dark-mode #contact a:hover {
   text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
 }
 
+/* Project cards inside modals - dark mode */
+body.dark-mode .project-card {
+  background: linear-gradient(135deg, #2a2a2a, #333);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  color: #e0e0e0;
+}
+
+body.dark-mode .project-card h4 {
+  color: #64b5f6; /* blue accent */
+}
+
+body.dark-mode .project-card p {
+  color: #ccc;
+}
+
+body.dark-mode .project-card:hover {
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  color: #fff;
+  transform: translateX(10px);
+  box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+}
+
+body.dark-mode .project-card:hover h4,
+body.dark-mode .project-card:hover p {
+  color: #fff;
+}
+
 
 #darkModeToggle {
   background: linear-gradient(135deg, #0d47a1, #1565c0);
