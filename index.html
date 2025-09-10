@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vivek Shukla | Data Analyst Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     * {
       box-sizing: border-box;
@@ -136,7 +138,7 @@
       transition: all 0.3s ease;
       transform: translateY(0);
     }
-
+/* 
     nav a::before {
       content: '';
       position: absolute;
@@ -146,7 +148,7 @@
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
       transition: left 0.5s;
-    }
+    } */
 
     nav a:hover {
       background: rgba(255,255,255,0.1);
@@ -160,11 +162,11 @@
 
     /* Section animations */
     section {
-      padding: 4rem 2rem;
+      padding: 2rem ;
       max-width: 1200px;
       margin: auto;
       background: rgba(255,255,255,0.95);
-      margin-bottom: 2rem;
+      margin: 4rem Auto;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       position: relative;
@@ -192,10 +194,10 @@
     /* Animated headings */
     h2 {
       color: #0d47a1;
-      margin-bottom: 2rem;
+      margin: 0rem;
       font-size: 2.5rem;
       position: relative;
-      padding-bottom: 1rem;
+      padding-bottom: 0.1rem;
     }
 
     h2::after {
@@ -221,6 +223,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      margin: 2rem 0rem 0rem 0rem;
     }
 
     .skill {
@@ -428,7 +431,7 @@
       overflow: hidden;
       text-decoration: none;
       display: inline-block;
-      margin: 0.3rem;
+      margin: 1rem 0rem 0rem 0rem;
     }
 
     .more-btn::before, .btn::before, .cert-btn::before {
@@ -464,7 +467,7 @@
       background: linear-gradient(135deg, #fff, #f8f9fa);
       border: 1px solid #e0e0e0;
       border-radius: 20px;
-      padding: 2rem;
+      padding: 1rem;
       text-align: center;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       transition: all 0.4s ease;
@@ -523,7 +526,7 @@
 
     .cert-icon {
       font-size: 3rem;
-      margin-bottom: 1rem;
+    
       display: inline-block;
       transition: transform 0.3s ease;
     }
@@ -789,7 +792,7 @@ body.nav-open {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 100%;
+    width: 75%;
     height: 100vh;
     background: #0d47a1;      /* FULL solid background as requested */
     flex-direction: column;
@@ -819,7 +822,7 @@ body.nav-open {
 .v-nav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;  /* pushes logo left, hamburger right */
+  justify-content: flex-end;  /* pushes logo left, hamburger right */
   width: 100%;
   padding: 0.75rem 1.5rem;
 }
@@ -838,23 +841,50 @@ body.nav-open {
     flex-direction: row;
   }
   .v-nav-list a{ font-size: 1rem; }
+  
+  h4{
+    font-size: 25px;
+    margin: 10px 0px;
+  }
+
+  p.cert-issuer{
+    margin: 5px 0px;
+  }
+
+  p.cert-date{
+    margin: 5px 0px;
 }
 
+.contact-icons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.contact-icons a {
+  font-size: 1.8rem;
+  color: #0d47a1;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.contact-icons a:hover {
+  color: #1565c0;
+  transform: scale(1.2);
+}
+
+
+}
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header>
-    <h1>Vivek Shukla</h1>
-    <p>Fresher Data Analyst | Excel • SQL • Power BI • Tableau</p>
-  </header>
 
-  <!-- NAVIGATION -->
+    <!-- NAVIGATION -->
 
 <nav class="v-nav">
   <div class="v-nav-inner">
-    <div class="v-logo">Vivek Shukla</div>
+    <!-- <div class="v-logo">Vivek Shukla</div> -->
 
     <!-- Hamburger button (visible only on mobile) -->
     <button id="vHamburger" class="v-hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -875,6 +905,11 @@ body.nav-open {
   </div>
 </nav>
 
+  <!-- HEADER -->
+  <header>
+    <h1>Vivek Shukla</h1>
+    <p>Fresher Data Analyst | Excel • SQL • Power BI • Tableau</p>
+  </header>
 
 
   <!-- <nav>
@@ -897,6 +932,14 @@ body.nav-open {
       I've completed multiple hands-on projects and hold certifications that showcase my growing expertise.
       My goal is to start my career as a data analyst and contribute to data-driven decision making.
     </p>
+
+  <div class="contact-icons">
+    <a href="mailto:vivekshukla22057@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+    <a href="tel:+919667470640"><i class="fa-solid fa-phone"></i></a>
+    <a href="https://www.linkedin.com/in/vivekshukla01/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/VivekShuklaDA" target="_blank"><i class="fa-brands fa-github"></i></a>
+  </div>
+
   </section>
 
   <!-- SKILLS -->
@@ -1004,19 +1047,19 @@ body.nav-open {
 
   <!-- RESUME -->
   <section id="resume" class="scroll-animate">
-    <h2>Resume</h2>
-    <a class="btn" href="Vivek_Shukla_CV .pdf" target="_blank">View Resume</a>
-    <a class="btn" href="Vivek_Shukla_CV .pdf" download>Download Resume</a>
+    <h2>CV</h2>
+    <a class="btn" href="Vivek_Shukla_CV .pdf" target="_blank">View CV</a>
+    <a class="btn" href="Vivek_Shukla_CV .pdf" download>Download CV</a>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT
   <section id="contact" class="scroll-animate">
     <h2>Contact Me</h2>
     <p>Email: <a href="mailto:vivekshukla22057@gmail.com">vivekshukla22057@gmail.com</a></p>
     <p>Phone: +91 96674 70640</p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/vivekshukla01/" target="_blank">Visit</a></p>
     <p>GitHub: <a href="https://github.com/VivekShuklaDA" target="_blank">Visit</a></p>
-  </section>
+  </section> -->
 
   <footer>
     <p>© 2025 Vivek Shukla. All rights reserved.</p>
