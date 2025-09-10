@@ -10,146 +10,6 @@
       box-sizing: border-box;
     }
 
-/* Headings in dark mode */
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode h4 {
-  color: #64b5f6; /* nice light blue accent */
-}
-
-/* Section backgrounds */
-body.dark-mode section {
-  background: rgba(30, 30, 30, 0.95);
-  color: #e0e0e0;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Skill tags */
-body.dark-mode .skill {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  color: #e0e0e0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .skill:hover {
-  background: linear-gradient(135deg, #1565c0, #1976d2);
-  color: #fff;
-  box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
-}
-
-/* Category cards */
-body.dark-mode .category-card {
-  background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
-  color: #f1f1f1;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-mode .category-card:hover {
-  background: linear-gradient(135deg, #1565c0, #1976d2);
-  color: #fff;
-}
-
-/* Certificate cards */
-body.dark-mode .cert-card {
-  background: linear-gradient(135deg, #2a2a2a, #333);
-  color: #ddd;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-}
-
-body.dark-mode .cert-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  background: linear-gradient(135deg, #1976d2, #2196f3);
-  color: #fff;
-}
-
-/* Modal content */
-body.dark-mode .modal-content {
-  background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
-  color: #e0e0e0;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Footer */
-body.dark-mode footer {
-  background: linear-gradient(135deg, #0d47a1, #1565c0);
-  color: #fff;
-}
-
-/* Contact section in dark mode */
-body.dark-mode #contact p {
-  background: linear-gradient(135deg, #2a2a2a, #333);
-  color: #ddd;
-  border-left: 4px solid #64b5f6; /* blue accent */
-  border-radius: 10px;
-}
-
-body.dark-mode #contact p:hover {
-  background: linear-gradient(135deg, #333, #444);
-  color: #fff;
-  transform: translateX(8px);
-  box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3); /* glow effect */
-}
-
-/* Links inside contact */
-body.dark-mode #contact a {
-  color: #64b5f6;
-}
-
-body.dark-mode #contact a:hover {
-  color: #90caf9;
-  text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
-}
-
-/* Project cards inside modals - dark mode */
-body.dark-mode .project-card {
-  background: linear-gradient(135deg, #2a2a2a, #333);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-  color: #e0e0e0;
-}
-
-body.dark-mode .project-card h4 {
-  color: #64b5f6; /* blue accent */
-}
-
-body.dark-mode .project-card p {
-  color: #ccc;
-}
-
-body.dark-mode .project-card:hover {
-  background: linear-gradient(135deg, #1565c0, #1976d2);
-  color: #fff;
-  transform: translateX(10px);
-  box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
-}
-
-body.dark-mode .project-card:hover h4,
-body.dark-mode .project-card:hover p {
-  color: #fff;
-}
-
-
-#darkModeToggle {
-  background: linear-gradient(135deg, #0d47a1, #1565c0);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  position: absolute;
-  right: 20px;
-  top: 12px;
-}
-
-#darkModeToggle:hover {
-  background: linear-gradient(135deg, #1565c0, #1976d2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-
 
     body {
       margin: 0;
@@ -841,6 +701,145 @@ body.dark-mode .project-card:hover p {
       background: rgba(13, 71, 161, 0.1);
       transform: rotate(90deg);
     }
+
+    /* ---------- responsive hamburger nav (paste into your <style>) ---------- */
+
+/* Basic container */
+.v-nav {
+  position: sticky; /* stays at top on desktop */
+  top: 0;
+  z-index: 1200;
+  width: 100%;
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+}
+
+/* inner row with logo + hamburger */
+.v-nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0.75rem 1.5rem;
+}
+
+/* logo */
+.v-logo{
+  color: #fff;
+  font-weight:700;
+  font-size:1.15rem;
+}
+
+/* hamburger button */
+.v-hamburger{
+  display:none;               /* hidden on desktop */
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size:1.6rem;
+  cursor: pointer;
+  line-height:1;
+  padding: 6px;
+}
+
+/* the nav panel (desktop default: inline / visible) */
+.v-nav-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  transition: none;
+}
+
+/* list and links - desktop style */
+.v-nav-list{
+  display:flex;
+  gap:1.5rem;
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+.v-nav-list a{
+  color: #fff;
+  text-decoration:none;
+  font-weight:700;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  transition: all .2s ease;
+}
+
+html {
+  scroll-padding-top: 80px; /* adjust this to your navbar height */
+}
+
+
+.v-nav-list a:hover{
+  background: rgba(255,255,255,0.07);
+}
+
+/* Prevent body scroll when menu open (toggled by JS) */
+body.nav-open {
+  overflow: hidden;
+}
+
+/* ---------------- Mobile: full-screen, solid background overlay ---------------- */
+@media (max-width: 768px) {
+  .v-hamburger { display: block; }
+
+  /* panel becomes full-screen overlay off-canvas */
+  .v-nav-panel{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #0d47a1;      /* FULL solid background as requested */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.35s ease;
+    z-index: 1250;
+  }
+
+  /* when open bring it into view */
+  .v-nav-panel.open {
+    left: 0;
+  }
+
+  /* vertical nav list for mobile */
+  .v-nav-list{
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  .v-nav-list a{
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
+    color: #fff;
+  }
+
+  /* keep the header row (logo + hamburger) visible above the panel if needed */
+.v-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* pushes logo left, hamburger right */
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+}
+
+}
+
+/* On larger screens keep nav inline and hide the hamburger (explicitly) */
+@media (min-width: 769px) {
+  .v-hamburger { display: none; }
+  .v-nav-panel {
+    position: static;
+    left: auto;
+    height: auto;
+    width: auto;
+    background: transparent;
+    flex-direction: row;
+  }
+  .v-nav-list a{ font-size: 1rem; }
+}
+
   </style>
 </head>
 
@@ -852,16 +851,42 @@ body.dark-mode .project-card:hover p {
   </header>
 
   <!-- NAVIGATION -->
-  <nav>
+
+<nav class="v-nav">
+  <div class="v-nav-inner">
+    <div class="v-logo">Vivek Shukla</div>
+
+    <!-- Hamburger button (visible only on mobile) -->
+    <button id="vHamburger" class="v-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="v-hamburger-icon">☰</span>
+    </button>
+  </div>
+
+  <!-- Panel: on desktop this is shown inline; on mobile this becomes full-screen overlay -->
+  <div id="vNavPanel" class="v-nav-panel" aria-hidden="true">
+    <ul class="v-nav-list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  <!-- <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#certificates">Certificates</a>
     <a href="#resume">Resume</a>
     <a href="#contact">Contact</a>
-    <button id="darkModeToggle">🌙 Dark Mode</button>
+   
 
-  </nav>
+  </nav> -->
 
   <!-- ABOUT -->
   <section id="about" class="scroll-animate">
@@ -1617,26 +1642,62 @@ body.dark-mode .project-card:hover p {
       });
     }
   </script>
+<script>
+(function(){
+  const hamburger = document.getElementById('vHamburger');
+  const panel = document.getElementById('vNavPanel');
 
-  <script>
-  const toggleBtn = document.getElementById("darkModeToggle");
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    // Save user preference
-    if (document.body.classList.contains("dark-mode")) {
-      localStorage.setItem("theme", "dark");
-      toggleBtn.textContent = "☀️ Light Mode";
-    } else {
-      localStorage.setItem("theme", "light");
-      toggleBtn.textContent = "🌙 Dark Mode";
+  if (!hamburger || !panel) return;
+
+  function openMenu() {
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.querySelector('.v-hamburger-icon').textContent = '✖';
+    document.body.classList.add('nav-open');
+  }
+  function closeMenu() {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.querySelector('.v-hamburger-icon').textContent = '☰';
+    document.body.classList.remove('nav-open');
+  }
+
+  hamburger.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (panel.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+
+  // Close when a nav link is clicked (mobile)
+  panel.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  // Close when clicking the empty area of the overlay (not on links)
+  panel.addEventListener('click', function(e){
+    if (e.target === panel) closeMenu();
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && panel.classList.contains('open')) {
+      closeMenu();
     }
   });
 
-  // Load saved preference
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleBtn.textContent = "☀️ Light Mode";
-  }
+  // When viewport resizes to desktop, ensure menu is closed and body unlocked
+  window.addEventListener('resize', function(){
+    if (window.innerWidth > 768 && panel.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+})();
 </script>
+
+
 </body>
 </html>
