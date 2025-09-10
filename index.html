@@ -1,90 +1,822 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vivek Shukla | Data Analyst Portfolio</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+/* Headings in dark mode */
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4 {
+  color: #64b5f6; /* nice light blue accent */
+}
+
+/* Section backgrounds */
+body.dark-mode section {
+  background: rgba(30, 30, 30, 0.95);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Skill tags */
+body.dark-mode .skill {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .skill:hover {
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+}
+
+/* Category cards */
+body.dark-mode .category-card {
+  background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+  color: #f1f1f1;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .category-card:hover {
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  color: #fff;
+}
+
+/* Certificate cards */
+body.dark-mode .cert-card {
+  background: linear-gradient(135deg, #2a2a2a, #333);
+  color: #ddd;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .cert-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: linear-gradient(135deg, #1976d2, #2196f3);
+  color: #fff;
+}
+
+/* Modal content */
+body.dark-mode .modal-content {
+  background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
+  color: #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Footer */
+body.dark-mode footer {
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  color: #fff;
+}
+
+/* Contact section in dark mode */
+body.dark-mode #contact p {
+  background: linear-gradient(135deg, #2a2a2a, #333);
+  color: #ddd;
+  border-left: 4px solid #64b5f6; /* blue accent */
+  border-radius: 10px;
+}
+
+body.dark-mode #contact p:hover {
+  background: linear-gradient(135deg, #333, #444);
+  color: #fff;
+  transform: translateX(8px);
+  box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3); /* glow effect */
+}
+
+/* Links inside contact */
+body.dark-mode #contact a {
+  color: #64b5f6;
+}
+
+body.dark-mode #contact a:hover {
+  color: #90caf9;
+  text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+}
+
+
+#darkModeToggle {
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 20px;
+  top: 12px;
+}
+
+#darkModeToggle:hover {
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9fbfd;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #333;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(13, 71, 161, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(21, 101, 192, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(13, 71, 161, 0.05) 0%, transparent 50%);
+      animation: backgroundShift 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { transform: translateX(0px) translateY(0px); }
+      33% { transform: translateX(-20px) translateY(-10px); }
+      66% { transform: translateX(20px) translateY(10px); }
+    }
+
+    /* Header Animations */
     header {
-      background: #0d47a1;
+      background: linear-gradient(135deg, #0d47a1, #1565c0, #1976d2);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
       color: #fff;
-      padding: 2rem;
+      padding: 4rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    header h1 { margin: 0; font-size: 2.5rem; }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,0.03) 10px,
+        rgba(255,255,255,0.03) 20px
+      );
+      animation: patternMove 20s linear infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes patternMove {
+      0% { transform: translate(-50px, -50px); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.5rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideInUp 1s ease 0.5s forwards;
+    }
+
+    header p {
+      position: relative;
+      z-index: 2;
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideInUp 1s ease 1s forwards;
+    }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Navigation with hover effects */
     nav {
-      background: #1565c0;
+      background: rgba(21, 101, 192, 0.95);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       gap: 2rem;
       padding: 1rem;
       position: sticky;
-      top: 0; z-index: 1000;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
-    nav a { color: #fff; text-decoration: none; font-weight: bold; }
-    section { padding: 3rem 2rem; max-width: 1000px; margin: auto; }
-    h2 { color: #0d47a1; margin-bottom: 1rem; }
-    p { line-height: 1.6; }
 
-    /* Skill List */
-    .skills { display: flex; flex-wrap: wrap; gap: 1rem; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    /* Section animations */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      background: rgba(255,255,255,0.95);
+      margin-bottom: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: sectionFadeIn 0.8s ease forwards;
+      backdrop-filter: blur(10px);
+    }
+
+    section:nth-child(even) {
+      animation-delay: 0.2s;
+    }
+
+    section:nth-child(odd) {
+      animation-delay: 0.1s;
+    }
+
+    @keyframes sectionFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animated headings */
+    h2 {
+      color: #0d47a1;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0d47a1, #1565c0);
+      animation: underlineExpand 1s ease 0.5s forwards;
+      border-radius: 2px;
+    }
+
+    @keyframes underlineExpand {
+      to {
+        width: 60px;
+      }
+    }
+
+    /* Skill animations */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
     .skill {
-      background: #e3f2fd;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      border: 1px solid #90caf9;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      border: 2px solid transparent;
       font-size: 0.9rem;
-    }
-
-    /* Cards */
-    .card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+      font-weight: 600;
       cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: skillPop 0.5s ease forwards;
     }
-    .card:hover { transform: translateY(-5px); }
-    .card img { width: 100%; border-radius: 8px; }
 
-    /* Modal */
+    .skill:nth-child(1) { animation-delay: 0.1s; }
+    .skill:nth-child(2) { animation-delay: 0.2s; }
+    .skill:nth-child(3) { animation-delay: 0.3s; }
+    .skill:nth-child(4) { animation-delay: 0.4s; }
+    .skill:nth-child(5) { animation-delay: 0.5s; }
+    .skill:nth-child(6) { animation-delay: 0.6s; }
+    .skill:nth-child(7) { animation-delay: 0.7s; }
+    .skill:nth-child(8) { animation-delay: 0.8s; }
+    .skill:nth-child(9) { animation-delay: 0.9s; }
+    .skill:nth-child(10) { animation-delay: 1.0s; }
+    .skill:nth-child(11) { animation-delay: 1.1s; }
+    .skill:nth-child(12) { animation-delay: 1.2s; }
+
+    @keyframes skillPop {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .skill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(13, 71, 161, 0.1), transparent);
+      transition: left 0.6s;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: linear-gradient(135deg, #0d47a1, #1565c0);
+      color: white;
+      border-color: #1976d2;
+      box-shadow: 0 8px 25px rgba(13, 71, 161, 0.3);
+    }
+
+    .skill:hover::before {
+      left: 100%;
+    }
+
+    /* Enhanced category cards */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .category-card {
+      background: linear-gradient(135deg, #0d47a1, #1565c0, #1976d2);
+      color: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 8px 25px rgba(13, 71, 161, 0.3);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px) rotateX(15deg);
+      animation: cardFlipIn 0.8s ease forwards;
+    }
+
+    .category-card:nth-child(1) { animation-delay: 0.1s; }
+    .category-card:nth-child(2) { animation-delay: 0.2s; }
+    .category-card:nth-child(3) { animation-delay: 0.3s; }
+    .category-card:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes cardFlipIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+      }
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: transform 0.6s;
+      transform: rotate(45deg) translate(-100%, -100%);
+    }
+
+    .category-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(13, 71, 161, 0.4);
+      background: linear-gradient(135deg, #1565c0, #1976d2, #2196f3);
+    }
+
+    .category-card:hover::before {
+      transform: rotate(45deg) translate(100%, 100%);
+    }
+
+    .category-card .icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover .icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .category-card h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .category-card .project-count {
+      font-size: 1rem;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    /* Enhanced project cards */
+    .project-card {
+      background: linear-gradient(135deg, #fff, #f8f9fa);
+      border: 1px solid #e0e0e0;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(13, 71, 161, 0.05), transparent);
+      transition: left 0.6s;
+    }
+
+    .project-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 30px rgba(13, 71, 161, 0.15);
+      border-color: #0d47a1;
+    }
+
+    .project-card:hover::before {
+      left: 100%;
+    }
+
+    .project-card img {
+      width: 140px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 12px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Enhanced buttons */
+    .more-btn, .btn, .cert-btn {
+      background: linear-gradient(135deg, #0d47a1, #1565c0);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0.3rem;
+    }
+
+    .more-btn::before, .btn::before, .cert-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .more-btn:hover, .btn:hover, .cert-btn:hover {
+      background: linear-gradient(135deg, #1565c0, #1976d2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(13, 71, 161, 0.3);
+    }
+
+    .more-btn:hover::before, .btn:hover::before, .cert-btn:hover::before {
+      left: 100%;
+    }
+
+    /* Enhanced certificates */
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .cert-card {
+      background: linear-gradient(135deg, #fff, #f8f9fa);
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px) rotateY(15deg);
+      animation: certFlipIn 0.8s ease forwards;
+    }
+
+    .cert-card:nth-child(1) { animation-delay: 0.1s; }
+    .cert-card:nth-child(2) { animation-delay: 0.2s; }
+    .cert-card:nth-child(3) { animation-delay: 0.3s; }
+    .cert-card:nth-child(4) { animation-delay: 0.4s; }
+    .cert-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes certFlipIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateY(0deg);
+      }
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #0d47a1, #1565c0, #1976d2);
+      background-size: 200% 100%;
+      animation: gradientMove 3s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .cert-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(13, 71, 161, 0.2);
+    }
+
+.project-detail-img {
+  width: 100%;
+  max-width: 700px;   /* keeps them from being too wide */
+  height: auto;
+  max-height: 400px;  /* fixes tall images */
+  object-fit: cover;  /* crops instead of stretching */
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 20px auto; /* center and add spacing */
+}
+
+    .cert-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card:hover .cert-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    /* Modal enhancements */
     .modal {
-      display: none; position: fixed; z-index: 2000; left: 0; top: 0;
-      width: 100%; height: 100%; overflow: auto;
-      background-color: rgba(0,0,0,0.7);
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      animation: modalFadeIn 0.3s ease;
     }
-    .modal-content {
-      background: #fff; margin: 5% auto; padding: 20px; border-radius: 10px;
-      width: 90%; max-width: 700px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .modal-content img { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
-    .modal-content h3 { margin-top: 0; color: #0d47a1; }
-    .modal-content .btn {
-      display: inline-block; background: #0d47a1; color: #fff;
-      padding: 0.6rem 1rem; margin: 0.2rem; border-radius: 6px;
-      text-decoration: none; font-size: 0.9rem;
-    }
-    .modal-content .btn:hover { background: #1565c0; }
-    .close { float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-    .close:hover { color: red; }
-    @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
 
-    footer { text-align: center; padding: 1rem; background: #1565c0; color: #fff; margin-top: 2rem; }
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+      }
+      to {
+        opacity: 1;
+        backdrop-filter: blur(5px);
+      }
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #fff, #f8f9fa);
+      margin: 3% auto;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Footer animation */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #1565c0, #0d47a1);
+      color: #fff;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: footerShine 3s ease infinite;
+    }
+
+    @keyframes footerShine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* Contact section enhancements */
+    #contact p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f0f8ff, #e3f2fd);
+      border-radius: 10px;
+      border-left: 4px solid #0d47a1;
+      transition: all 0.3s ease;
+    }
+
+    #contact p:hover {
+      transform: translateX(10px);
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    }
+
+    #contact a {
+      color: #0d47a1;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    #contact a:hover {
+      color: #1565c0;
+      text-shadow: 0 0 10px rgba(13, 71, 161, 0.3);
+    }
+
+    /* Scroll animations */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .certificates-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        margin: 1rem;
+        padding: 2rem 1rem;
+      }
+    }
+
+    /* Additional hover effects for interactive elements */
+    .project-info h4 {
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-info h4 {
+      color: #1565c0;
+    }
+
+    /* Close button animation */
+    .close {
+      float: right;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #999;
+      transition: all 0.3s ease;
+      padding: 5px;
+      border-radius: 50%;
+    }
+
+    .close:hover {
+      color: #0d47a1;
+      background: rgba(13, 71, 161, 0.1);
+      transform: rotate(90deg);
+    }
   </style>
 </head>
-<body>
 
+<body>
   <!-- HEADER -->
   <header>
     <h1>Vivek Shukla</h1>
@@ -99,21 +831,23 @@
     <a href="#certificates">Certificates</a>
     <a href="#resume">Resume</a>
     <a href="#contact">Contact</a>
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+
   </nav>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="scroll-animate">
     <h2>About Me</h2>
     <p>
-      Hi, I’m <strong>Vivek Shukla</strong>, a passionate fresher data analyst from Delhi. 
-      I specialize in transforming raw data into meaningful insights using Power BI, Excel, SQL, and Tableau. 
-      I’ve completed multiple hands-on projects and hold certifications that showcase my growing expertise. 
+      Hi, I'm <strong>Vivek Shukla</strong>, a passionate fresher data analyst from Delhi.
+      I specialize in transforming raw data into meaningful insights using Power BI, Excel, SQL, and Tableau.
+      I've completed multiple hands-on projects and hold certifications that showcase my growing expertise.
       My goal is to start my career as a data analyst and contribute to data-driven decision making.
     </p>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills">
+  <section id="skills" class="scroll-animate">
     <h2>Technical & Soft Skills</h2>
     <div class="skills">
       <span class="skill">Power BI</span>
@@ -132,152 +866,749 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects">
+  <section id="projects" class="scroll-animate">
     <h2>Projects</h2>
-    <!-- Example card -->
-    <div class="card" onclick="openModal('dairyModal')">
-      <h3>Dairy Sales & Production Dashboard (Power BI)</h3>
-      <img src="images/Dairy_Light_mode.png" alt="Dairy Dashboard">
+    <div class="category-grid">
+      <div class="category-card" onclick="openCategoryModal('powerbi')">
+        <div class="icon">📊</div>
+        <h3>Power BI</h3>
+        <p class="project-count">5 Projects</p>
+      </div>
+
+      <div class="category-card" onclick="openCategoryModal('sql')">
+        <div class="icon">🗄️</div>
+        <h3>SQL</h3>
+        <p class="project-count">2 Projects</p>
+      </div>
+
+      <div class="category-card" onclick="openCategoryModal('tableau')">
+        <div class="icon">📈</div>
+        <h3>Tableau</h3>
+        <p class="project-count">1 Project</p>
+      </div>
+
+      <div class="category-card" onclick="openCategoryModal('excel')">
+        <div class="icon">📋</div>
+        <h3>Excel</h3>
+        <p class="project-count">3 Projects</p>
+      </div>
     </div>
-     <div class="card" onclick="openModal('dairyModal')">
-      <h3>Pizza Sales Performance Dashboard (Power BI)</h3>
-      <img src="images/Pizza_Sales.png" alt="Pizza sales Dashboard">
-    </div>
-     <div class="card" onclick="openModal('dairyModal')">
-      <h3>Indian Population Insights Dashboard (Power BI)</h3>
-      <img src="images/Indian_Population.png" alt="Indian Population Dashboard">
-    </div>
-     <div class="card" onclick="openModal('dairyModal')">
-      <h3>Superstore Sales & Profitability Dashboard (Power BI)</h3>
-      <img src="images/Store.png" alt="Store Dashboard">
-    </div>
-     <div class="card" onclick="openModal('dairyModal')">
-      <h3>IPL Cricket Analytics Dashboard (Power BI)</h3>
-      <img src="images/IPL_Image.png" alt="IPL Dashboard">
-    </div>
-    <!-- Add the other 9 project cards here like earlier -->
   </section>
 
-  <!-- PROJECT MODALS (example) -->
-  <div id="dairyModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('dairyModal')">&times;</span>
-      <h3>Dairy Sales Performance Dashboard (Power BI)</h3>
-      <img src="images/Dairy_Light_mode.png" alt="Dairy Dashboard">
-      <p>Designed an end-to-end dashboard analyzing 118M total sales across 10 dairy products. Tracked revenue by product, location, and sales channels, along with stock vs. reorder levels and farm-level insights. Delivered actionable KPIs like profit per unit, customer location revenue share, and farm size contribution.</p>
-      <a class="btn" href="https://tinyurl.com/53vp2674" target="_blank">Live Dashboard</a>
-      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
-     <!-- <a class="btn" href="https://github.com/yourusername/dairy-dashboard" target="_blank">View on GitHub</a> -->
-    </div>
-  </div>
-    <div id="pizzaModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('pizzaModal')">&times;</span>
-      <h3>Pizza Sales Performance Dashboard (Power BI)</h3>
-      <img src="images/Pizza_Sales.png" alt="pizza sales Dashboard">
-      <p>Built an interactive sales analysis for a pizza chain covering 82M in sales and 48K+ orders. Visualized performance by pizza categories, sizes, and weekdays/months. Identified top-selling products and profitability trends, helping optimize menu and inventory planning.</p>
-      <a class="btn" href="https://tinyurl.com/376wdnfv" target="_blank">Live Dashboard</a>
-      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>   
-    </div>
-  </div>
-    <div id="populationModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('populationModal')">&times;</span>
-      <h3>Indian Population Insights Dashboard (Power BI)</h3>
-      <img src="images/Indian_Population.png" alt="Population Dashboard">
-      <p>Created a demographic dashboard covering India’s 1.21B+ population. Showcased state-wise population, rural vs. urban split, literacy rates, and sex ratio comparisons. Highlighted density variations and top/bottom performing states for better socio-economic planning.</p>
-      <a class="btn" href="https://tinyurl.com/6v2tfjek" target="_blank">Live Dashboard</a>
-      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
-    </div>
-  </div>
-    <div id="dairyModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('superstoreModal')">&times;</span>
-      <h3>Superstore Sales & Profitability Dashboard (Power BI)</h3>
-      <img src="images/Store.png" alt="Superstore Dashboard">
-      <p>Developed a global retail performance dashboard analyzing $12.6M sales across 165 countries. Segmented by category, sub-category, region, and market, with KPIs on profit margins, shipping costs, and customer segments. Provided insights for market expansion and cost optimization.</p>
-      <a class="btn" href="https://tinyurl.com/4rk3d34j" target="_blank">Live Dashboard</a>
-      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
-    </div>
-  </div>
-    <div id="dairyModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('iplModal')">&times;</span>
-      <h3>IPL Cricket Analytics Dashboard (Power BI)</h3>
-      <img src="images/IPL_Image.png" alt="IPL Dashboard">
-      <p>Built a sports analytics dashboard analyzing 816 IPL matches, 252K runs, and 9.4K wickets. Featured team performance, win margins, venue impact, and player leaderboards. Delivered insights into top batsmen, bowlers, and strike rate trends for performance evaluation.</p>
-      <a class="btn" href="https://tinyurl.com/sunm6jrw" target="_blank">Live Dashboard</a>
-      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
-    </div>
-  </div>
-
   <!-- CERTIFICATES -->
-  <section id="certificates">
+  <section id="certificates" class="scroll-animate">
     <h2>Certificates</h2>
-    <div class="card">
-      <h3>Google Data Analytics Certificate</h3>
-      <p>Issued by Google</p>
-      <a class="btn" href="files/google_data_analytics.pdf" target="_blank">View Certificate</a>
+    <div class="certificates-grid">
+      <div class="cert-card">
+        <div class="cert-icon">📊</div>
+        <h4>Microsoft PowerBI</h4>
+        <p class="cert-issuer">Issued by Croma Campus</p>
+        <p class="cert-date">Completed 2025</p>
+        <a class="cert-btn" href="https://credentials.cromacampus.com/pdfdownload/3806" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🗄️</div>
+        <h4>SQL</h4>
+        <p class="cert-issuer">Issued by Croma Campus</p>
+        <p class="cert-date">Completed 2025</p>
+        <a class="cert-btn" href="https://credentials.cromacampus.com/pdfdownload/3807" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">📋</div>
+        <h4>Advanced Excel</h4>
+        <p class="cert-issuer">Issued by Croma Campus</p>
+        <p class="cert-date">Completed 2024</p>
+        <a class="cert-btn" href="https://credentials.cromacampus.com/pdfdownload/3808" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">📈</div>
+        <h4>Associate in Data Analytics</h4>
+        <p class="cert-issuer">Issued by Croma Campus</p>
+        <p class="cert-date">Completed 2025</p>
+        <a class="cert-btn" href="https://credentials.cromacampus.com/pdfdownload/3810" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <h4>Computer Networks Fundamentals </h4>
+        <p class="cert-issuer">Issued by udemy</p>
+        <p class="cert-date">Completed 2024</p>
+        <a class="cert-btn" href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-94c7a3c6-055f-4098-87ab-9ccf9595c38e.pdf" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🎖️</div>
+        <h4>Tableau</h4>
+        <p class="cert-issuer">Self-taught (YouTube)</p>
+        <p class="cert-date">Completed</p>
+        <span class="cert-btn" style="background: #999; cursor: not-allowed;">Self-Taught</span>
+      </div>
     </div>
-    <div class="card">
-      <h3>Microsoft Excel Fundamentals</h3>
-      <p>Issued by Microsoft</p>
-      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
-    </div>
-     <div class="card">
-      <h3>Microsoft Excel Fundamentals</h3>
-      <p>Issued by Microsoft</p>
-      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
-    </div>
-     <div class="card">
-      <h3>Microsoft Excel Fundamentals</h3>
-      <p>Issued by Microsoft</p>
-      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
-    </div>
-     <div class="card">
-      <h3>Microsoft Excel Fundamentals</h3>
-      <p>Issued by Microsoft</p>
-      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
-    </div>
-     <div class="card">
-      <h3>Microsoft Excel Fundamentals</h3>
-      <p>Issued by Microsoft</p>
-      <a class="btn" href="files/microsoft_excel.pdf" target="_blank">View Certificate</a>
-    </div>
-    <!-- Add more certificates the same way -->
   </section>
 
   <!-- RESUME -->
-  <section id="resume">
+  <section id="resume" class="scroll-animate">
     <h2>Resume</h2>
-    <a class="btn" href="Vivek_Shukla_CV.pdf" target="_blank">View Resume</a>
-    <a class="btn" href="Vivek_Shukla_CV.pdf" download>Download Resume</a>
+    <a class="btn" href="Vivek_Shukla_CV .pdf" target="_blank">View Resume</a>
+    <a class="btn" href="Vivek_Shukla_CV .pdf" download>Download Resume</a>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" class="scroll-animate">
     <h2>Contact Me</h2>
     <p>Email: <a href="mailto:vivekshukla22057@gmail.com">vivekshukla22057@gmail.com</a></p>
     <p>Phone: +91 96674 70640</p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/vivekshukla01" target="_blank">linkedin.com/in/vivekshukla01</a></p>
-    <p>GitHub: <a href="https://github.com/vivekshukla" target="_blank">github.com/vivekshukla</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/vivekshukla01/" target="_blank">Visit</a></p>
+    <p>GitHub: <a href="https://github.com/VivekShuklaDA" target="_blank">Visit</a></p>
   </section>
 
   <footer>
     <p>© 2025 Vivek Shukla. All rights reserved.</p>
   </footer>
 
+  <!-- MODALS (keeping the original modal structure) -->
+  
+  <!-- Power BI Projects Modal -->
+  <div id="powerbiModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('powerbiModal')">&times;</span>
+      <h3>📊 Power BI Projects</h3>
+
+      <div class="project-card">
+        <img src="images/Dairy_Light_mode.png" alt="Dairy Dashboard">
+        <div class="project-info">
+          <h4>Dairy Sales & Production Dashboard</h4>
+          <p>Comprehensive dashboard analyzing 118M total sales across 10 dairy products with farm-level insights and
+            KPIs.</p>
+          <button class="more-btn" onclick="openProjectDetail('dairy')">More Details</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/Pizza_Sales.png" alt="Pizza Sales Dashboard">
+        <div class="project-info">
+          <h4>Pizza Sales Performance Dashboard</h4>
+          <p>Interactive sales analysis covering 82M in sales and 48K+ orders with category and trend insights.</p>
+          <button class="more-btn" onclick="openProjectDetail('pizza')">More Details</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/Indian_Population.png" alt="Population Dashboard">
+        <div class="project-info">
+          <h4>Indian Population Insights Dashboard</h4>
+          <p>Demographic dashboard showcasing India's 1.21B+ population with state-wise analysis and literacy rates.</p>
+          <button class="more-btn" onclick="openProjectDetail('population')">More Details</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/Store.png" alt="Superstore Dashboard">
+        <div class="project-info">
+          <h4>Superstore Sales & Profitability Dashboard</h4>
+          <p>Global retail performance dashboard analyzing $12.6M sales across 165 countries with market insights.</p>
+          <button class="more-btn" onclick="openProjectDetail('superstore')">More Details</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/IPL_Image.png" alt="IPL Dashboard">
+        <div class="project-info">
+          <h4>IPL Cricket Analytics Dashboard</h4>
+          <p>Sports analytics covering 816 matches, 252K runs, and 9.4K wickets with player performance insights.</p>
+          <button class="more-btn" onclick="openProjectDetail('ipl')">More Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SQL Projects Modal -->
+  <div id="sqlModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('sqlModal')">&times;</span>
+      <h3>🗄️ SQL Projects</h3>
+
+      <div class="project-card">
+        <img src="images/bookstore.jpg" alt="Bookstore Analysis">
+        <div class="project-info">
+          <h4>Bookstore Analysis</h4>
+          <p>Advanced SQL queries for Bookstore analysis and segmentation using complex joins and CTEs.</p>
+          <button class="more-btn" onclick="openProjectDetail('customer-sql')">More Details</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/house.jpg" alt="Nashville house">
+        <div class="project-info">
+          <h4>Nashville houseing Data Cleaning</h4>
+          <p>Comprehensive sales data analysis with window functions, stored procedures, and performance optimization.
+          </p>
+          <button class="more-btn" onclick="openProjectDetail('sales-sql')">More Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SQL PROJECT DETAIL MODALS -->
+  <div id="customerSqlDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('customerSqlDetailModal')">&times;</span>
+      <h3>Bookstore Analysis</h3>
+      <img src="images/bookstore.jpg" alt="bookstore Analysis" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>
+        Designed and implemented a full-scale bookstore analytics system using SQL Server to derive meaningful insights
+        from customer, order, and book data. The project covered revenue tracking, inventory monitoring, customer
+        segmentation, and genre-based sales performance. Leveraged advanced SQL techniques including window functions,
+        CTEs, and aggregation to uncover sales trends and customer behaviors. Enabled data-driven decisions through
+        detailed reporting on customer activity, product popularity, and stock levels.
+      </p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">SQL Server</span>
+        <span class="tech-tag">Complex JOINs</span>
+        <span class="tech-tag">CTEs</span>
+        <span class="tech-tag">Window Functions</span>
+        <span class="tech-tag">Subqueries</span>
+        <span class="tech-tag">Data Aggregation</span>
+        <span class="tech-tag">Case Statements</span>
+        <span class="tech-tag">Date Filtering</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Genre-wise and author-wise sales analysis with total quantity sold and revenue contribution</li>
+        <li>Customer segmentation through RFM (Recency, Frequency, Monetary) metrics</li>
+        <li>Top customers identification based on spending and order frequency</li>
+        <li>Inventory control via low-stock alerts and remaining stock calculations</li>
+        <li>Monthly and cumulative revenue analysis using CTEs and window functions</li>
+        <li>Dynamic ranking of books by price within each genre using partitioned window functions</li>
+        <li>Time-based order filtering to identify seasonal trends and high-performing months</li>
+        <li>Identification of most and least popular books based on order volume</li>
+      </ul>
+      <a class="btn"
+        href="https://github.com/VivekShuklaDA/Data_Analyst_Portfolio/blob/ff1952d5f0d7ff4c867365bac7fc8cb17efa1b4b/files/Book%20Store%20Project.sql"
+        target="_blank">Github Repository</a>
+      <a class="btn" href="files/Book Store Project.sql" download>Download script</a>
+    </div>
+  </div>
+
+  <div id="salesSqlDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('salesSqlDetailModal')">&times;</span>
+      <h3>Nashville data cleaning</h3>
+      <img src="images/house.jpg" alt=" Nashville house cleaning" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>
+        Executed a complete data cleaning pipeline on the Nashville Housing dataset using SQL Server. The objective was
+        to transform raw, inconsistent real estate transaction data into a clean, structured format suitable for
+        analysis. The project involved standardizing date formats, handling null values, splitting complex address
+        fields, correcting categorical inconsistencies, and removing duplicate records. A new cleaned dataset was
+        created and populated with enhanced data for further use in analysis or dashboarding.
+      </p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">SQL Server</span>
+        <span class="tech-tag">Data Cleaning</span>
+        <span class="tech-tag">CTEs</span>
+        <span class="tech-tag">Window Functions</span>
+        <span class="tech-tag">String Functions</span>
+        <span class="tech-tag">Data Transformation</span>
+        <span class="tech-tag">Conditional Logic</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Created a new <code>NashvilleHousingCleaned</code> table structure using <code>SELECT INTO</code></li>
+        <li>Standardized inconsistent <strong>SaleDate</strong> formats using <code>CONVERT()</code> and added a new
+          formatted column</li>
+        <li>Filled missing <strong>PropertyAddress</strong> values by joining on <code>ParcelID</code> and using
+          <code>ISNULL()</code></li>
+        <li>Split <strong>PropertyAddress</strong> into separate columns: Street and City using <code>SUBSTRING()</code>
+          and <code>CHARINDEX()</code></li>
+        <li>Parsed <strong>OwnerAddress</strong> into Address, City, and State using <code>PARSENAME()</code> and
+          <code>REPLACE()</code></li>
+        <li>Standardized <strong>SoldAsVacant</strong> values from 'Y'/'N' to 'Yes'/'No' using a <code>CASE</code>
+          statement</li>
+        <li>Identified and removed duplicate records using a CTE with <code>ROW_NUMBER()</code></li>
+        <li>Dropped temporary or unnecessary columns after transformations were complete</li>
+        <li>Inserted cleaned and transformed data into the <code>NashvilleHousingCleaned</code> table for future
+          analysis</li>
+      </ul>
+
+      <a class="btn"
+        href="https://github.com/VivekShuklaDA/Data_Analyst_Portfolio/blob/ff1952d5f0d7ff4c867365bac7fc8cb17efa1b4b/files/Data%20Cleaning%20in%20sql.sql"
+        target="_blank">Github Repository</a>
+      <a class="btn" href="files/Data Cleaning.sql" download>Download script</a>
+    </div>
+  </div>
+
+
+  <!-- Tableau Projects Modal -->
+  <div id="tableauModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('tableauModal')">&times;</span>
+      <h3>📈 Tableau Projects</h3>
+
+      <div class="project-card">
+        <img src="images/Screenshot 2025-09-09 145013.png" alt="British Airways Review Dashboard">
+        <div class="project-info">
+          <h4>British Airways Review Dashboard</h4>
+          <p>Interactive customer review dashboard analyzing satisfaction, ratings, and trends across routes and
+            services.</p>
+          <button class="more-btn" onclick="openModal('britishAirwaysDetailModal')">More Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="britishAirwaysDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('britishAirwaysDetailModal')">&times;</span>
+      <h3>British Airways Review Dashboard</h3>
+      <img src="images/Screenshot 2025-09-09 145013.png" alt="British Airways Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Designed a customer feedback dashboard for British Airways based on reviews from 2016–2023. Assessed overall
+        and category-wise ratings (food, staff, entertainment, etc.) by traveler type, country, and aircraft. Enabled
+        customer experience teams to pinpoint service weaknesses and regional differences.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Tableau</span>
+        <span class="tech-tag">Calculated Fields</span>
+        <span class="tech-tag">Parameters</span>
+        <span class="tech-tag">Filters</span>
+        <span class="tech-tag">Maps</span>
+      </div>
+
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Average rating trends over time with seasonal spikes and drops</li>
+        <li>Aircraft-wise rating comparison (e.g., Boeing 747, A320)</li>
+        <li>Traveler-type filters (Business, Family, Solo, etc.)</li>
+        <li>Rating breakdown by comfort, food, cabin crew, and entertainment</li>
+        <li>Global map showing average ratings by country</li>
+      </ul>
+      <!-- Enable buttons with links -->
+      <a class="btn"
+        href="https://public.tableau.com/views/BritishAirwayReview_17574106660540/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+        target="_blank">View on Tableau Public</a>
+      <a class="btn" href="files/british_airways_review.twbx" download>Download Workbook</a>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
+  <!-- Excel Projects Modal -->
+  <div id="excelModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('excelModal')">&times;</span>
+      <h3>📊 Excel Projects</h3>
+
+      <!-- Bird Migration -->
+      <div class="project-card">
+        <img src="images/Bird Migration Dashboard.png" alt="Bird Migration Dashboard">
+        <div class="project-info">
+          <h4>Bird Migration Dashboard</h4>
+          <p>Excel dashboard tracking bird migration patterns with maps and seasonal trends.</p>
+          <button class="more-btn" onclick="openModal('birdExcelDetailModal')">More Details</button>
+        </div>
+      </div>
+
+      <!-- Cybersecurity Threat -->
+      <div class="project-card">
+        <img src="images/Cybersecurity Threat Dashboard.png" alt="Cybersecurity Threat Dashboard">
+        <div class="project-info">
+          <h4>Cybersecurity Threat Dashboard</h4>
+          <p>Interactive Excel dashboard analyzing global cybersecurity incidents and risks.</p>
+          <button class="more-btn" onclick="openModal('cyberExcelDetailModal')">More Details</button>
+        </div>
+      </div>
+
+      <!-- Global Superstore -->
+      <div class="project-card">
+        <img src="images/Global Store Dashboard .png" alt="Global Superstore Dashboard">
+        <div class="project-info">
+          <h4>Global Superstore Dashboard</h4>
+          <p>Comprehensive Excel dashboard analyzing sales, profit, and customer segments.</p>
+          <button class="more-btn" onclick="openModal('superstoreExcelDetailModal')">More Details</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bird Migration Detail -->
+  <div id="birdExcelDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('birdExcelDetailModal')">&times;</span>
+      <h3>Bird Migration Dashboard</h3>
+      <img src="images/Bird Migration Dashboard.png" alt="Bird Migration Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Developed an interactive bird migration dashboard tracking 10,000 birds across 7 species globally. Provided
+        insights into migration and nesting success, species-wise distribution by region and habitat, and interruption
+        causes such as storms and predators. Helped in ecological pattern analysis and conservation planning.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Excel</span>
+        <span class="tech-tag">Pivot Tables</span>
+        <span class="tech-tag">Slicers</span>
+        <span class="tech-tag">Bar & Pie Charts</span>
+        <span class="tech-tag">Data Filters</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Interactive filters by region, habitat, flock migration, and tracking quality</li>
+        <li>Migration and nesting success analysis per species</li>
+        <li>Bird count distribution by habitat and continent</li>
+        <li>Pie chart showing total bird population per species</li>
+        <li>Reason-wise interruption statistics (storm, predator, lost signal, injury)</li>
+      </ul>
+
+      <a class="btn" href="files/bird_migration Dashboard.xlsx" download>Download Excel File</a>
+    </div>
+  </div>
+
+  <!-- Cybersecurity Threat Detail -->
+  <div id="cyberExcelDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('cyberExcelDetailModal')">&times;</span>
+      <h3>Cybersecurity Threat Dashboard</h3>
+      <img src="images/Cybersecurity Threat Dashboard.png" alt="Cybersecurity Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Built a 10-year interactive cybersecurity analytics dashboard covering 2015–2024. Tracked financial losses,
+        attack sources, vulnerabilities, and affected users segmented by country and industry. Enabled decision-makers
+        to identify high-risk zones, industry impact, and evolving threat patterns.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Excel</span>
+        <span class="tech-tag">Pivot Charts</span>
+        <span class="tech-tag">Data Validation</span>
+        <span class="tech-tag">Slicers</span>
+        <span class="tech-tag">Line & Bar Graphs</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Trend analysis of financial loss by year and attack type</li>
+        <li>Classification of affected users by attack source (Nation-state, Insider, etc.)</li>
+        <li>Donut chart of affected industries (Banking, IT, Healthcare, etc.)</li>
+        <li>Vulnerability type impact analysis (Social engineering, Zero-day, etc.)</li>
+        <li>Country-wise affected user mapping</li>
+      </ul>
+
+      <a class="btn" href="files/Cyber security Dashboard.xlsx" download>Download Excel File</a>
+    </div>
+  </div>
+
+  <!-- Global Superstore Detail -->
+  <div id="superstoreExcelDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('superstoreExcelDetailModal')">&times;</span>
+      <h3>Global Superstore Dashboard</h3>
+      <img src="images/Global Store Dashboard .png" alt="Global Superstore Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Developed a global retail performance dashboard analyzing ₹1.26 Cr+ in sales across 50K+ orders. Enabled
+        stakeholders to view profit trends, top-performing regions, shipping time metrics, and return impact. Used for
+        strategic planning, logistics optimization, and product focus analysis.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Excel</span>
+        <span class="tech-tag">Pivot Tables</span>
+        <span class="tech-tag">Data Validation</span>
+        <span class="tech-tag">Dynamic Charts</span>
+        <span class="tech-tag">Slicers</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>KPI overview: Sales (₹1.26 Cr), Profit (₹14.67 L), Orders (51K)</li>
+        <li>Monthly sales growth trend (2014–2017)</li>
+        <li>Top 10 products and regions by profit</li>
+        <li>Shipping mode analysis by delivery time</li>
+        <li>Return rate (11.2%) impact analysis with region and category filters</li>
+      </ul>
+
+      <a class="btn" href="files/Global_Superstore_Cleaned.xlsx" download>Download Excel File</a>
+    </div>
+  </div>
+
+  <!-- Script for Modals -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
+
+  <!-- POWER BI PROJECT DETAIL MODALS -->
+  <div id="dairyDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('dairyDetailModal')">&times;</span>
+      <h3>Dairy Sales & Production Dashboard</h3>
+      <img src="images/Dairy_Light_mode.png" alt="Dairy Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Designed an end-to-end dashboard analyzing 118M total sales across 10 dairy products. This comprehensive
+        analysis tracked revenue by product, location, and sales channels, along with stock vs. reorder levels and
+        farm-level insights. The dashboard delivered actionable KPIs including profit per unit, customer location
+        revenue share, and farm size contribution to optimize dairy operations.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">DAX</span>
+        <span class="tech-tag">Data Modeling</span>
+        <span class="tech-tag">ETL</span>
+        <span class="tech-tag">Excel</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Interactive sales performance tracking across multiple product categories</li>
+        <li>Geographic revenue analysis with location-based insights</li>
+        <li>Inventory management with stock level monitoring</li>
+        <li>Farm productivity analysis and size impact assessment</li>
+        <li>Profit margin analysis per product unit</li>
+      </ul>
+
+      <a class="btn" href="https://tinyurl.com/53vp2674" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/dairy_dashboard.pbix" download>Download PBIX</a>
+    </div>
+  </div>
+
+  <div id="pizzaDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('pizzaDetailModal')">&times;</span>
+      <h3>Pizza Sales Performance Dashboard</h3>
+      <img src="images/Pizza_Sales.png" alt="Pizza Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Built an interactive sales analysis for a pizza chain covering 82M in sales and 48K+ orders. Visualized
+        performance by pizza categories, sizes, and weekdays/months. Identified top-selling products and profitability
+        trends, helping optimize menu and inventory planning.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">DAX</span>
+        <span class="tech-tag">Calculated Columns</span>
+        <span class="tech-tag">Slicers</span>
+        <span class="tech-tag">Tooltips</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Analyzed 48K+ pizza orders with total sales of 0.82M and average unit price of 16.49</li>
+        <li>Sales contribution by category (Chicken, Classic, Supreme, Veggie) and size (L, M, S, XL, XXL)</li>
+        <li>Top vs. bottom pizzas by order quantity and revenue</li>
+        <li>Monthly and weekday sales patterns for demand forecasting</li>
+        <li>Interactive filters for profitability and product mix optimization</li>
+      </ul>
+
+      <a class="btn" href="https://tinyurl.com/376wdnfv" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/PizzaSales.pbix" download>Download PBIX</a>
+    </div>
+  </div>
+
+  <div id="populationDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('populationDetailModal')">&times;</span>
+      <h3>Indian Population Insights Dashboard</h3>
+      <img src="images/Indian_Population.png" alt="Indian Population Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Created a demographic dashboard covering India's 1.21B+ population. Showcased state-wise population, rural vs.
+        urban split, literacy rates, and sex ratio comparisons. Highlighted density variations and top/bottom performing
+        states for better socio-economic planning.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">Filters</span>
+        <span class="tech-tag">Slicers</span>
+        <span class="tech-tag">Tooltips</span>
+        <span class="tech-tag">Calculated Measures</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>State-wise population analysis (Total 1.21B, Literacy 77.94%)</li>
+        <li>Comparative visualization of literacy rate vs. sex ratio</li>
+        <li>Rural vs. urban population breakdown across major states</li>
+        <li>Top and bottom states by density and population size</li>
+        <li>Interactive filters for demographic insights supporting policy planning</li>
+      </ul>
+
+      <a class="btn" href="https://tinyurl.com/6v2tfjek" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/Population Dashboard.pbix" download>Download PBIX</a>
+    </div>
+  </div>
+
+  <div id="superstoreDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('superstoreDetailModal')">&times;</span>
+      <h3>Superstore Sales & Profitability Dashboard</h3>
+      <img src="images/Store.png" alt="superstore Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Developed a global retail performance dashboard analyzing $12.6M sales across 165 countries. Segmented by
+        category, sub-category, region, and market, with KPIs on profit margins, shipping costs, and customer segments.
+        Provided insights for market expansion and cost optimization.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">DAX</span>
+        <span class="tech-tag">Slicers</span>
+        <span class="tech-tag">Bookmarks</span>
+        <span class="tech-tag">Drill-downs</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Sales breakdown by segment (Consumer, Corporate, Home Office) and category (Technology, Furniture, Office
+          Supplies)</li>
+        <li>Regional analysis across Asia Pacific, Europe, USCA, LATAM, and Africa</li>
+        <li>Monthly sales trend analysis with seasonality patterns</li>
+        <li>Sub-category insights (Phones, Copiers, Chairs, etc.) with contribution to profit</li>
+        <li>KPI tracking for total sales (12.64M), profit (1.47M), and shipping cost (1.36M)</li>
+      </ul>
+
+      <a class="btn" href="https://tinyurl.com/4rk3d34j" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/store.pbix" download>Download PBIX</a>
+    </div>
+  </div>
+
+  <div id="iplDetailModal" class="modal project-detail-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('iplDetailModal')">&times;</span>
+      <h3>IPL Cricket Analytics Dashboard</h3>
+      <img src="images/IPL_Image.png" alt="IPL Dashboard" class="project-detail-img">
+
+      <h4>Project Overview</h4>
+      <p>Built a sports analytics dashboard analyzing 816 IPL matches, 252K runs, and 9.4K wickets. Featured team
+        performance, win margins, venue impact, and player leaderboards. Delivered insights into top batsmen, bowlers,
+        and strike rate trends for performance evaluation.</p>
+
+      <h4>Technologies Used</h4>
+      <div class="tech-tags">
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">DAX</span>
+        <span class="tech-tag">Bookmarks</span>
+        <span class="tech-tag">Interactive Filters</span>
+        <span class="tech-tag">KPIs</span>
+      </div>
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Analyzed 816 IPL matches, 253K runs, and 9,495 wickets across seasons</li>
+        <li>Team performance KPIs including win rate %, strike rate, and average margins</li>
+        <li>Player leaderboard with runs, strike rates, sixes, and fours</li>
+        <li>Result type analysis (wins by wickets/runs, ties) across years</li>
+        <li>Venue-wise and toss-decision outcome dashboards with interactive visuals</li>
+      </ul>
+
+      <a class="btn" href="https://tinyurl.com/sunm6jrw" target="_blank">Live Dashboard</a>
+      <a class="btn" href="files/IPL.pbix" download>Download PBIX</a>
+    </div>
+  </div>
+
   <!-- SCRIPT -->
   <script>
-    function openModal(id) { document.getElementById(id).style.display = "block"; }
-    function closeModal(id) { document.getElementById(id).style.display = "none"; }
-    window.onclick = function(event) {
+    // Category modal functions
+    function openCategoryModal(category) {
+      document.getElementById(category + 'Modal').style.display = "block";
+    }
+
+    // Project detail modal functions
+    function openProjectDetail(project) {
+      // Close any open category modal first
       document.querySelectorAll('.modal').forEach(modal => {
-        if (event.target == modal) modal.style.display = "none";
+        modal.style.display = 'none';
+      });
+
+      // Open specific project detail modal
+      const modalMap = {
+        // Power BI Projects
+        'dairy': 'dairyDetailModal',
+        'pizza': 'pizzaDetailModal',
+        'population': 'populationDetailModal',
+        'superstore': 'superstoreDetailModal',
+        'ipl': 'iplDetailModal',
+
+        // SQL Projects
+        'customer-sql': 'customerSqlDetailModal',
+        'sales-sql': 'salesSqlDetailModal',
+
+        // Tableau Projects
+        'financial-tableau': 'financialTableauDetailModal',
+
+        // Excel Projects
+        'budget-excel': 'budgetExcelDetailModal',
+        'forecast-excel': 'forecastExcelDetailModal',
+        'kpi-excel': 'kpiExcelDetailModal'
+      };
+
+      const modalId = modalMap[project];
+      if (modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
+    }
+
+    // Close modal function
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function (event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
       });
     }
   </script>
 
+  <script>
+  const toggleBtn = document.getElementById("darkModeToggle");
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    // Save user preference
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "☀️ Light Mode";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙 Dark Mode";
+    }
+  });
+
+  // Load saved preference
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+</script>
 </body>
 </html>
-
